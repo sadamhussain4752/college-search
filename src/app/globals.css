@@ -2093,13 +2093,7 @@ form .select_searchbox .search_list li {
 }
 
 #universalHeader #headernavigationBar .CS_HeaderLogo {
-    background-image: url(/build/assets/sprite_sheet-C212QFux.webp);
-    background-position: -6px -107px;
-    display: inline-block;
-    transform: scale(auto);
-    width: 180px;
-    height: 32px;
-    font-size: 0px
+ 
 }
 
 #universalHeader #headernavigationBar .logo_and_navigation_wrap {
