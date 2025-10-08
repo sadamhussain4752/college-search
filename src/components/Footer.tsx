@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,7 +9,16 @@ export default function Footer() {
 
             <div className="footer_flex_wrap">
                 <div className="CS_logo_tagline">
-                    <span className="CS_logo_footer"></span>
+                   <Link href="/" className="CS_HeaderLogo">
+      <Image
+        src="/build/assets/logo.png"
+        alt="Mythri Logo"
+        width={180}
+        height={32}
+        className="logo-img"
+        priority
+      />
+    </Link>
                     <div className="tagline_wrap">
                         <h3>Discover and Find the <s>Best</s> Right College</h3>
                     </div>

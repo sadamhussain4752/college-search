@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,7 +43,16 @@ export default function Header() {
                             <span className="hamburger_menu"></span>
                         </div>
 
-                        <Link href="/" className="CS_HeaderLogo">CollegeSearch</Link>
+                         <Link href="/" className="CS_HeaderLogo">
+      <Image
+        src="/build/assets/logo.png"
+        alt="Mythri Logo"
+        width={180}
+        height={32}
+        className="logo-img"
+        priority
+      />
+    </Link>
 
                         <div className="navigation_wrapper visible_side_nav">
                             <div className="sidenav_closer">
