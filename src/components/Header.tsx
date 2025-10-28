@@ -66,7 +66,7 @@ export default function Header() {
               <span className="close_sidenav"></span>
             </div>
 
-            {combinedNavigation.map((nav, idx) => (
+            {combinedNavigation.map((nav: any, idx) => (
               <div key={idx} className="navigation_div">
                 <p className="nav_main_heading">{nav.heading || "Explore Courses"}</p>
 
@@ -80,14 +80,14 @@ export default function Header() {
                     <div className="parent_wrapper">
                       {/* Courses */}
                       {nav.courses
-                        ? nav.courses.map((course, courseIdx) => (
+                        ? nav.courses.map((course: any, courseIdx: any) => (
                             <div key={courseIdx} className="course_navigation_wrap">
                               <h4 className="course_title">{course.name}</h4>
 
-                              {course.sections.map((section, secIdx) => (
+                              {course.sections.map((section: any, secIdx: any) => (
                                 <div key={secIdx} className="type_of_navigation_wrap">
                                   <p>{section.title}</p>
-                                  {section.links.map((link, linkIdx) => (
+                                  {section.links.map((link: any, linkIdx: any) => (
                                     <Link key={linkIdx} href={link.url}>{link.label}</Link>
                                   ))}
                                 </div>
@@ -95,10 +95,10 @@ export default function Header() {
                             </div>
                           ))
                         : /* Sections only */
-                          nav.sections.map((section, secIdx) => (
+                          nav.sections.map((section: any, secIdx: any) => (
                             <div key={secIdx} className="type_of_navigation_wrap">
                               <p>{section.title}</p>
-                              {section.links.map((link, linkIdx) => (
+                              {section.links.map((link: any, linkIdx: any) => (
                                 <Link key={linkIdx} href={link.url}>{link.label}</Link>
                               ))}
                             </div>

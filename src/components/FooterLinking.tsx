@@ -111,7 +111,7 @@ export default function FooterLinking() {
             <div key={idx} className="accordion_div">
               <p className="accordion">{section.title}</p>
               <div className="panel">
-                {section.links.map((link, linkIdx) => (
+                {section.links.map((link: any, linkIdx) => (
                   <a key={linkIdx} href={link.url} target={link.target || "_self"}>{link.name}</a>
                 ))}
               </div>
