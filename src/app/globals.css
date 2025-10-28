@@ -4023,3 +4023,23 @@ form .select_searchbox .search_list li {
     font-weight: 700;
     color: #a03318
 }
+
+.course_name {
+  display: inline-block;
+  width: 250px;          /* fixed width */
+  white-space: normal;   /* allow text wrapping */
+  word-wrap: break-word; /* break long words if needed */
+  overflow: hidden;
+  color: #b91c1c;        /* red text */
+  font-weight: 500;
+  text-decoration: none; /* remove underline */
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease; /* smooth hover effect */
+}
+
+
+.course_name:hover {
+  background-color: #b91c1c; /* red background on hover */
+  color: #fff;               /* white text on hover */
+}
