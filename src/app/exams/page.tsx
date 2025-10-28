@@ -38,7 +38,7 @@ const exams = [
 
 export default function Exams() {
   // Example: handle modal open
-  const handleGetUpdates = (examId) => {
+  const handleGetUpdates = (examId: any) => {
     console.log("Open modal for exam ID:", examId);
     // You can trigger modal logic here
   };

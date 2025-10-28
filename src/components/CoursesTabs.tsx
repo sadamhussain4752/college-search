@@ -1,18 +1,35 @@
-'use client';
+"use client";
+
 import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, DocumentData } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 
+// ✅ Define the shape of each course item
+interface CourseItem {
+  id: string;
+  name?: string;
+  duration?: string;
+  colleges: number;
+  exams: number;
+}
+
+// ✅ Define the degree-level object structure
+interface DegreeCourses {
+  degree_1: CourseItem[]; // UG
+  degree_2: CourseItem[]; // PG
+  degree_3: CourseItem[]; // Diploma
+}
+
 export default function CoursesTabs() {
-  const [activeTab, setActiveTab] = useState("degree_1");
-  const [degreeCourses, setDegreeCourses] = useState({
+  const [activeTab, setActiveTab] = useState<"degree_1" | "degree_2" | "degree_3">("degree_1");
+  const [degreeCourses, setDegreeCourses] = useState<DegreeCourses>({
     degree_1: [],
     degree_2: [],
     degree_3: [],
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const handleTabClick = (tabId) => {
+  const handleTabClick = (tabId: "degree_1" | "degree_2" | "degree_3") => {
     setActiveTab(tabId);
   };
 
@@ -21,39 +38,25 @@ export default function CoursesTabs() {
     const fetchCourses = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "courses"));
-        const ug = [];
-        const pg = [];
-        const diploma = [];
+        const ug: CourseItem[] = [];
+        const pg: CourseItem[] = [];
+        const diploma: CourseItem[] = [];
 
         querySnapshot.forEach((doc) => {
-          const data = doc.data();
+          const data = doc.data() as DocumentData;
 
-          // ✅ Sort into UG / PG / Diploma
-          if (data.courseLevel === "UG") {
-            ug.push({
-              id: doc.id,
-              name: data.courseName,
-              duration: data.duration,
-              colleges: data.topColleges?.length || 0,
-              exams: data.entranceExams?.length || 0,
-            });
-          } else if (data.courseLevel === "PG") {
-            pg.push({
-              id: doc.id,
-              name: data.courseName,
-              duration: data.duration,
-              colleges: data.topColleges?.length || 0,
-              exams: data.entranceExams?.length || 0,
-            });
-          } else if (data.courseLevel === "Diploma") {
-            diploma.push({
-              id: doc.id,
-              name: data.courseName,
-              duration: data.duration,
-              colleges: data.topColleges?.length || 0,
-              exams: data.entranceExams?.length || 0,
-            });
-          }
+          const courseBase = {
+            id: doc.id,
+            name: data.courseName || "",
+            duration: data.duration || "",
+            colleges: data.topColleges?.length || 0,
+            exams: data.entranceExams?.length || 0,
+          };
+
+          // ✅ Categorize by courseLevel
+          if (data.courseLevel === "UG") ug.push(courseBase);
+          else if (data.courseLevel === "PG") pg.push(courseBase);
+          else if (data.courseLevel === "Diploma") diploma.push(courseBase);
         });
 
         setDegreeCourses({
@@ -75,35 +78,26 @@ export default function CoursesTabs() {
 
   return (
     <>
-      {/* ✅ Tab Buttons — SAME STYLE */}
+      {/* ✅ Tabs Header */}
       <div className="tabs_btn_wrap" role="tablist">
-        <div
-          className={`tab-button ${activeTab === "degree_1" ? "active_tab" : ""}`}
-          onClick={() => handleTabClick("degree_1")}
-          role="tab"
-          aria-selected={activeTab === "degree_1"}
-        >
-          UG
-        </div>
-        <div
-          className={`tab-button ${activeTab === "degree_2" ? "active_tab" : ""}`}
-          onClick={() => handleTabClick("degree_2")}
-          role="tab"
-          aria-selected={activeTab === "degree_2"}
-        >
-          PG
-        </div>
-        <div
-          className={`tab-button ${activeTab === "degree_3" ? "active_tab" : ""}`}
-          onClick={() => handleTabClick("degree_3")}
-          role="tab"
-          aria-selected={activeTab === "degree_3"}
-        >
-          Diploma
-        </div>
+        {[
+          { id: "degree_1", label: "UG" },
+          { id: "degree_2", label: "PG" },
+          { id: "degree_3", label: "Diploma" },
+        ].map(({ id, label }) => (
+          <div
+            key={id}
+            className={`tab-button ${activeTab === id ? "active_tab" : ""}`}
+            onClick={() => handleTabClick(id as "degree_1" | "degree_2" | "degree_3")}
+            role="tab"
+            aria-selected={activeTab === id}
+          >
+            {label}
+          </div>
+        ))}
       </div>
 
-      {/* ✅ Tab Content — SAME LAYOUT & CLASSES */}
+      {/* ✅ Tabs Content */}
       <div className="tabs_content_wrapper">
         {Object.entries(degreeCourses).map(([degreeId, courses]) => (
           <div
@@ -115,33 +109,33 @@ export default function CoursesTabs() {
           >
             <div className="explore_course_wrap">
               {courses.length > 0 ? (
-                courses.map((course) => (
+                courses.map((course: any) => (
                   <div key={course.id} className="explore_course_div">
                     <p className="course_logo"></p>
 
-                    <a
-                      href={`/course/${course.id}`}
-                      className="course_name "
-                    >
+                    <a href={`/course/${course.id}`} className="course_name">
                       {course.name}
                     </a>
 
                     <div className="course_data_div">
                       <p>
-                        <span>Duration</span><br />{course.duration || "N/A"}
+                        <span>Duration</span>
+                        <br />
+                        {course.duration || "N/A"}
                       </p>
                       <p>
-                        <span>Colleges</span><br />{course.colleges}
+                        <span>Colleges</span>
+                        <br />
+                        {course.colleges}
                       </p>
                       <p>
-                        <span>Related Exams</span><br />{course.exams}
+                        <span>Related Exams</span>
+                        <br />
+                        {course.exams}
                       </p>
                     </div>
 
-                    <a
-                      href={`/course/${course.id}`}
-                      className="view_link"
-                    >
+                    <a href={`/course/${course.id}`} className="view_link">
                       View Course Overview &gt;
                     </a>
                   </div>
