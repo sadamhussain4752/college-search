@@ -22,10 +22,11 @@ export default function UpcomingExams() {
   const fetchExams = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "keamExams"));
-      const data: any[] = querySnapshot.docs.map((doc: any) => ({
-        id: doc.id,
-        ...(doc.data() as Exam),
-      }));
+      const data: any[] = querySnapshot.docs.map((doc: any) => {
+        const docData = doc.data() as Exam;
+        const { id: _ignoredId, ...rest } = docData || {};
+        return { ...rest, id: doc.id };
+      });
       setExams(data);
     } catch (error) {
       console.error("Error fetching exams:", error);
