@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 const exams = [
   {
@@ -119,7 +120,16 @@ export default function Exams() {
             {exams.map((exam) => (
               <div key={exam.id} className="listing_data_card">
                 <a href={exam.detailsUrl} className="logo_and_info">
-                  <img src={exam.logo} alt={`${exam.shortName} Logo`} />
+                 {exam.logo && (
+  <Image
+    src={exam.logo}
+    alt={`${exam.shortName} Logo`}
+    width={80}          // ✅ set width
+    height={80}         // ✅ set height
+    className="object-contain"
+    priority={false}    // lazy-loads by default
+  />
+)}
                   <div className="listing_card_info">
                     <h3>{exam.title}</h3>
                     <div className="span_info">

@@ -5,6 +5,7 @@ import LatestArticles from '@/components/LatestArticles'
 import LatestNews from '@/components/LatestNews'
 import FooterLinking from '@/components/FooterLinking'
 import Footer from '@/components/Footer'
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -91,18 +92,26 @@ export default function Home() {
             </div>
 
             <div className="applynow_btn_wrap" id="admitQuest">
-              <a
-                href="#"
-                target="_blank"
-                id="applyNowLink"
-                className="btn applynow_btn"
-              >
-                Apply Now via <img src="build/assets/admitquestLogo-C9IGcvDE.png" alt="AdmitQuest Logo" />
-              </a>
-              <a href="#" className="btn closenow_btn" id="closebtn">
-                Close
-              </a>
-            </div>
+      <a
+        href="#"
+        target="_blank"
+        id="applyNowLink"
+        className="btn applynow_btn flex items-center gap-2"
+      >
+        Apply Now via{" "}
+        <Image
+          src="/build/assets/admitquestLogo-C9IGcvDE.png"
+          alt="AdmitQuest Logo"
+          width={100}
+          height={30}
+          priority
+        />
+      </a>
+
+      <a href="#" className="btn closenow_btn" id="closebtn">
+        Close
+      </a>
+    </div>
           </div>
         </div>
       </div>

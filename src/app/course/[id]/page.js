@@ -7,6 +7,7 @@ import { doc, getDoc, collection, addDoc, serverTimestamp, getDocs } from "fireb
 import { db } from "@/firebase/firebase";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 export default function CourseDetailsPage({ params }) {
  // ✅ unwrap params with React.use() for future-proof Next.js compatibility
@@ -114,13 +115,18 @@ export default function CourseDetailsPage({ params }) {
                   : course.publishDate}
               </p>
             </div>
-            {course.media?.images?.[0] && (
-              <img
-                src={course.media.images[0]}
-                alt={course.courseName}
-                className="w-40 h-28 object-cover rounded-lg mt-4 md:mt-0"
-              />
-            )}
+           {course.media?.images?.[0] && (
+  <div className="w-40 h-28 relative mt-4 md:mt-0">
+    <Image
+      src={course.media.images[0]}
+      alt={course.courseName || "Course Image"}
+      fill
+      className="object-cover rounded-lg"
+      sizes="(max-width: 768px) 100vw, 200px"
+      priority={false}
+    />
+  </div>
+)}
           </div>
         </div>
 

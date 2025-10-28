@@ -1,17 +1,30 @@
 'use client';
+
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
+import Image from "next/image";
+
+interface Exam {
+  id: string;
+  examName?: string;
+  logo?: string;
+  course?: string;
+  examDate?: string;
+  examOverview?: {
+    coursesOffered?: string[];
+  };
+}
 
 export default function UpcomingExams() {
-  const [exams, setExams] = useState([]);
+  const [exams, setExams] = useState<Exam[]>([]);
 
   const fetchExams = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "keamExams"));
-      const data = querySnapshot.docs.map((doc) => ({
+      const data: any[] = querySnapshot.docs.map((doc: any) => ({
         id: doc.id,
-        ...doc.data(),
+        ...(doc.data() as Exam),
       }));
       setExams(data);
     } catch (error) {
@@ -24,21 +37,29 @@ export default function UpcomingExams() {
   }, []);
 
   return (
-  <div className="upcomingExamWrapperClass scrollable-element">
-      {exams.map((exam, idx) => (
+    <div className="upcomingExamWrapperClass scrollable-element">
+      {exams.map((exam) => (
         <a
-          key={idx}
-          href={`/exam/${exam.id}?title=${encodeURIComponent(exam.examName)}`}
+          key={exam.id}
+          href={`/exam/${exam.id}?title=${encodeURIComponent(exam.examName || "")}`}
           className="upcomingExamWrapperDiv"
         >
-          <img
-            src={exam.logo || 'https://d13loartjoc1yn.cloudfront.net/upload/exam/1744099053cat logo.webp'}
+          <Image
+            src={
+              exam.logo ||
+              "https://d13loartjoc1yn.cloudfront.net/upload/exam/1744099053cat logo.webp"
+            }
             alt={exam.examName || "Exam Logo"}
+            width={80}
+            height={80}
+            className="object-contain"
             loading="lazy"
           />
           <p>{exam.examName || "Exam Name"}</p>
           <span className="course_text">
-            {exam.examOverview?.coursesOffered?.join(", ") || exam.course || "N/A"}
+            {exam.examOverview?.coursesOffered?.length
+              ? exam.examOverview.coursesOffered.join(", ")
+              : exam.course || "N/A"}
           </span>
           <span>Exam Date</span>
           <b>{exam.examDate || "TBA"}</b>

@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
+import Image from "next/image";
 
 export default function CoursesPage() {
     const [ugCourses, setUgCourses] = useState([]);
@@ -49,21 +50,25 @@ export default function CoursesPage() {
                         {course.subtitle || course.category || ""}
                     </p>
                 </div>
-                {course.icon ? (
-                    <img
-                        src={course.icon}
-                        alt={course.courseName}
-                        className="w-8 h-8 object-contain"
-                        loading="lazy"
-                    />
-                ) : (
-                    <img
-                        src={'https://d13loartjoc1yn.cloudfront.net/upload/course/icon/1.svg'}
-                        alt={course.courseName}
-                        className="w-8 h-8 object-contain"
-                        loading="lazy"
-                    />
-                )}
+               {course.icon ? (
+  <Image
+    src={course.icon}
+    alt={course.courseName || "Course Icon"}
+    width={32}  // ✅ equivalent to w-8
+    height={32} // ✅ equivalent to h-8
+    className="object-contain"
+    loading="lazy"
+  />
+) : (
+  <Image
+    src="https://d13loartjoc1yn.cloudfront.net/upload/course/icon/1.svg"
+    alt={course.courseName || "Default Course Icon"}
+    width={32}
+    height={32}
+    className="object-contain"
+    loading="lazy"
+  />
+)}
             </div>
 
             <div className="flex justify-between text-sm border-t border-b py-3 mt-2">
