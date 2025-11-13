@@ -55,91 +55,7 @@ export const headerData = {
   },
 };
 
-export const navigationData2 = [
-  {
-    heading: "Explore Courses",
-    courses: [
-      {
-        id: 0,
-        name: "BCA",
-        sections: [
-          {
-            title: "About The Courses",
-            links: [
-              { label: "Bachelor Of Computer Application", url: "https://www.collegesearch.in/course/bca" },
-              { label: "BCA Colleges In India", url: "https://www.collegesearch.in/bca-colleges-india" },
-            ],
-          },
-          {
-            title: "Colleges by City",
-            links: [
-              { label: "BCA Colleges in Bangalore", url: "https://www.collegesearch.in/bca/colleges-bangalore" },
-              { label: "BCA Colleges in Delhi Ncr", url: "https://www.collegesearch.in/bca/colleges-delhi-ncr" },
-              { label: "BCA Colleges in Greater Noida", url: "https://www.collegesearch.in/bca/colleges-greater-noida" },
-              { label: "BCA Colleges in Pune", url: "https://www.collegesearch.in/bca/colleges-pune" },
-              { label: "BCA Colleges in Indore", url: "https://www.collegesearch.in/bca/colleges-indore" },
-              { label: "BCA Colleges in Mumbai", url: "https://www.collegesearch.in/bca/colleges-mumbai" },
-            ],
-          },
-          {
-            title: "Colleges by State",
-            links: [
-              { label: "BCA Colleges in Punjab", url: "https://www.collegesearch.in/bca/colleges-punjab" },
-              { label: "BCA Colleges in Uttar Pradesh", url: "https://www.collegesearch.in/bca/colleges-uttar-pradesh" },
-              { label: "BCA Colleges in Maharashtra", url: "https://www.collegesearch.in/bca/colleges-maharashtra" },
-              { label: "BCA Colleges in West Bengal", url: "https://www.collegesearch.in/bca/colleges-west-bengal" },
-              { label: "BCA Colleges in Tamil Nadu", url: "https://www.collegesearch.in/bca/colleges-tamil-nadu" },
-              { label: "BCA Colleges in Madhya Pradesh", url: "https://www.collegesearch.in/bca/colleges-madhya-pradesh" },
-            ],
-          },
-          {
-            title: "Related Exams",
-            links: [
-              { label: "NIMCET", url: "https://www.collegesearch.in/exams/nimcet" },
-              { label: "CUET", url: "https://www.collegesearch.in/exams/cuet" },
-              { label: "IPU CET", url: "https://www.collegesearch.in/exams/ggsipu-cet" },
-            ],
-          },
-        ],
-      },
-      {
-        id: 1,
-        name: "MCA",
-        sections: [
-          {
-            title: "About The Courses",
-            links: [
-              { label: "Master Of Computer Application", url: "https://www.collegesearch.in/course/mca" },
-              { label: "MCA Colleges In India", url: "https://www.collegesearch.in/mca-colleges-india" },
-            ],
-          },
-          {
-            title: "Colleges by City",
-            links: [
-              { label: "MCA Colleges in Bangalore", url: "https://www.collegesearch.in/mca/colleges-bangalore" },
-              { label: "MCA Colleges in Delhi Ncr", url: "https://www.collegesearch.in/mca/colleges-delhi-ncr" },
-              { label: "MCA Colleges in Greater Noida", url: "https://www.collegesearch.in/mca/colleges-greater-noida" },
-              { label: "MCA Colleges in Pune", url: "https://www.collegesearch.in/mca/colleges-pune" },
-              { label: "MCA Colleges in Indore", url: "https://www.collegesearch.in/mca/colleges-indore" },
-              { label: "MCA Colleges in Mumbai", url: "https://www.collegesearch.in/mca/colleges-mumbai" },
-            ],
-          },
-          {
-            title: "Colleges by State",
-            links: [
-              { label: "MCA Colleges in Punjab", url: "https://www.collegesearch.in/mca/colleges-punjab" },
-              { label: "MCA Colleges in Uttar Pradesh", url: "https://www.collegesearch.in/mca/colleges-uttar-pradesh" },
-              { label: "MCA Colleges in Maharashtra", url: "https://www.collegesearch.in/mca/colleges-maharashtra" },
-              { label: "MCA Colleges in West Bengal", url: "https://www.collegesearch.in/mca/colleges-west-bengal" },
-              { label: "MCA Colleges in Tamil Nadu", url: "https://www.collegesearch.in/mca/colleges-tamil-nadu" },
-              { label: "MCA Colleges in Madhya Pradesh", url: "https://www.collegesearch.in/mca/colleges-madhya-pradesh" },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-];
+export const navigationData2 = [];
 
 export const navigationData = [
   {
@@ -148,30 +64,14 @@ export const navigationData = [
       {
         title: "Popular Courses",
         links: [
-          { label: "MBA", url: "course/mba.html" },
-          { label: "BBA", url: "course/bba.html" },
-        ],
-      },
-      {
-        title: "MBA Colleges by City",
-        links: [
-          { label: "MBA/PGDM Colleges in Bangalore", url: "mba/colleges-bangalore.html" },
-          { label: "MBA/PGDM Colleges in Delhi Ncr", url: "mba/colleges-delhi-ncr.html" },
-          { label: "MBA/PGDM Colleges in Greater Noida", url: "mba/colleges-greater-noida.html" },
-          { label: "MBA/PGDM Colleges in Pune", url: "mba/colleges-pune.html" },
-          { label: "MBA/PGDM Colleges in Indore", url: "mba/colleges-indore.html" },
-          { label: "MBA/PGDM Colleges in Mumbai", url: "mba/colleges-mumbai.html" },
+          { label: "MBA", url: "/course/mba.html" },
+          { label: "BBA", url: "/course/bba.html" },
         ],
       },
       {
         title: "MBA Colleges by State",
         links: [
-          { label: "MBA/PGDM Colleges in Punjab", url: "mba/colleges-punjab.html" },
-          { label: "MBA/PGDM Colleges in Uttar Pradesh", url: "mba/colleges-uttar-pradesh.html" },
-          { label: "MBA/PGDM Colleges in Maharashtra", url: "mba/colleges-maharashtra.html" },
-          { label: "MBA/PGDM Colleges in West Bengal", url: "mba/colleges-west-bengal.html" },
-          { label: "MBA/PGDM Colleges in Tamil Nadu", url: "mba/colleges-tamil-nadu.html" },
-          { label: "MBA/PGDM Colleges in Madhya Pradesh", url: "mba/colleges-madhya-pradesh.html" },
+          { label: "MBA Colleges in Karnataka", url: "/course/mba.html?state=Karnataka" },
         ],
       },
       {
@@ -194,8 +94,8 @@ export const navigationData = [
       {
         title: "Popular Courses",
         links: [
-          { label: "Bachelor Of Technology (B.Tech)", url: "course/engineering.html" },
-          { label: "Master Of Technology (M.Tech)", url: "course/mtech.html" },
+          { label: "Bachelor Of Technology (B.Tech)", url: "/course/engineering.html" },
+          { label: "Master Of Technology (M.Tech)", url: "/course/mtech.html" },
         ],
       },
       {
@@ -223,21 +123,31 @@ export const navigationData = [
     ],
   },
   {
-    heading: "Science",
+    heading: "MBBS",
     sections: [
       {
         title: "Popular Courses",
         links: [
-          { label: "Bachelor Of Science (B.Sc)", url: "course/bsc.html" },
-          { label: "Master Of Science (M.Sc)", url: "course/msc.html" },
+          { label: "MBBS", url: "/course/mbbs.html" },
         ],
       },
       {
-        title: "B.Sc Colleges by City",
+        title: "MBBS Colleges in India",
         links: [
-          { label: "B.Sc Colleges in Bangalore", url: "bsc/colleges-bangalore.html" },
-          { label: "B.Sc Colleges in Delhi Ncr", url: "bsc/colleges-delhi-ncr.html" },
-          { label: "B.Sc Colleges in Pune", url: "bsc/colleges-pune.html" },
+          { label: "MBBS Colleges in Bangalore", url: "/course/mbbs.html?scope=india&city=Bangalore" },
+          { label: "MBBS Colleges in Delhi Ncr", url: "/course/mbbs.html?scope=india&city=Delhi%20Ncr" },
+          { label: "MBBS Colleges in Pune", url: "/course/mbbs.html?scope=india&city=Pune" },
+        ],
+      },
+      {
+        title: "MBBS Colleges in Abroad",
+        links: [
+          { label: "MBBS in Bangladesh", url: "/course/mbbs.html?scope=abroad&country=Bangladesh" },
+          { label: "MBBS in Russia", url: "/course/mbbs.html?scope=abroad&country=Russia" },
+          { label: "MBBS in China", url: "/course/mbbs.html?scope=abroad&country=China" },
+          { label: "MBBS in Ukraine", url: "/course/mbbs.html?scope=abroad&country=Ukraine" },
+          { label: "MBBS in Nepal", url: "/course/mbbs.html?scope=abroad&country=Nepal" },
+          { label: "MBBS in Kazakhstan", url: "/course/mbbs.html?scope=abroad&country=Kazakhstan" },
         ],
       },
     ],
